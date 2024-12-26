@@ -1,7 +1,19 @@
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'filter-panel/filter-panel.model.dart';
 import 'todo.model.dart';
 
 class TodoController extends GetxController {
+  final TextEditingController textController = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+
+  final List<Filter> filters = const <Filter>[
+    Filter(label: 'All', key: 'all'),
+    Filter(label: 'Active', key: 'active'),
+    Filter(label: 'Completed', key: 'completed'),
+  ];
+
+
   RxList<Task> tasks = <Task>[].obs;
   RxString currentFilter = 'all'.obs;
 

@@ -12,11 +12,10 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GetMaterialApp(
       title: 'Todos',
-      // initialBinding: HomeBinding(),
       getPages: [
         GetPage(
           name: '/',
-          page: () => HomeScreen(),
+          page: HomeScreen.new,
         ),
       ],
     );

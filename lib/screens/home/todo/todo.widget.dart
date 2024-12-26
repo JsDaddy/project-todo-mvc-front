@@ -4,8 +4,7 @@ import 'task-list/task-list.widget.dart';
 
 
 class TodoWidget extends StatelessWidget {
-  TodoWidget({super.key});
-  final TextEditingController textController = TextEditingController();
+  const TodoWidget({super.key});
 
   @override
   Widget build(BuildContext context) => Container(
@@ -14,9 +13,9 @@ class TodoWidget extends StatelessWidget {
         border: Border.all(color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(8),
       ),
-      child: Column(
-        children: [
-          AddTaskWidget(textController: textController),
+      child: const Column(
+        children: <Widget>[
+          AddTaskWidget(),
           TaskListWidget(),
         ],
       ),

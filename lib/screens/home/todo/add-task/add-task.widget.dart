@@ -3,35 +3,27 @@ import 'package:get/get.dart';
 import '../todo.controller.dart';
 import '../../../../common/input/input.widget.dart';
 
-class AddTaskWidget extends StatelessWidget {
-  const AddTaskWidget({
-    required this.textController, super.key,
-  });
+class AddTaskWidget extends GetView<TodoController> {
+  const AddTaskWidget({ super.key });
 
-  final TextEditingController textController;
 
   @override
-  Widget build(BuildContext context) {
-    final TodoController controller = Get.find<TodoController>();
-    final FocusNode focusNode = FocusNode();
-
-    return Container(
+  Widget build(BuildContext context) => Container(
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: Colors.grey.shade300),
         ),
       ),
       child: InputWidget(
-        textController: textController,
-        focusNode: focusNode,
+        textController: controller.textController,
+        focusNode: controller.focusNode,
         hintText: 'What needs to be done?',
         onSubmitted: (String value) {
           if (value.isNotEmpty) {
             controller.addTask(value);
-            textController.clear();
+            controller.textController.clear();
           }
         },
       ),
     );
-  }
 }

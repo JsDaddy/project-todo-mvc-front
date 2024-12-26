@@ -5,16 +5,18 @@ import 'todo/todo.widget.dart';
 import '../home/title/title.widget.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => TodoController());
+    Get.lazyPut(TodoController.new);
 
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
         child: Column(
-          children: [
-            const TitleWidget(),
+          children: <Widget>[
+            TitleWidget(),
             TodoWidget(),
           ],
         ),

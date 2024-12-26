@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget({
     required this.label,
-    required this.isActive,
     required this.onTap,
+    this.isActive = false,
     super.key,
   });
 

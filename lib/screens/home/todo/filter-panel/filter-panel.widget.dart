@@ -2,45 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/button/button.widget.dart';
 import '../todo.controller.dart';
+import 'filter-panel.model.dart';
 
-class FilterPanelWidget extends StatelessWidget {
-  FilterPanelWidget({super.key});
-
-  final TodoController controller = Get.find<TodoController>();
+class FilterPanelWidget extends GetView<TodoController> {
+  const FilterPanelWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final List<Map<String, String>> filters = <Map<String, String>>[
-      <String, String>{'label': 'All', 'key': 'all'},
-      <String, String>{'label': 'Active', 'key': 'active'},
-      <String, String>{'label': 'Completed', 'key': 'completed'},
-    ];
-
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Obx(() => Text(
-            '${controller.activeCount} items left',
-            style: const TextStyle(fontSize: 14, color: Colors.grey),
-          )),
-          Obx(() => Row(
-            children: filters
-                .map((Map<String, String> filter) => ButtonWidget(
-              label: filter['label']!,
-              isActive: controller.currentFilter.value == filter['key'],
-              onTap: () => controller.setFilter(filter['key']!),
-            ))
-                .toList(),
-          )),
-          ButtonWidget(
-            onTap: controller.clearCompleted,
-            label: 'Clear completed',
-            isActive: false,
-          ),
-        ],
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+    child: Obx(() => Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Text(
+          '${controller.activeCount} items left',
+          style: const TextStyle(fontSize: 14, color: Colors.grey),
+        ),
+        Row(
+          children: controller.filters
+              .map((Filter filter) => ButtonWidget(
+            label: filter.label,
+            isActive:
+            controller.currentFilter.value == filter.key,
+            onTap: () => controller.setFilter(filter.key),
+          ))
+              .toList(),
+        ),
+        ButtonWidget(
+          onTap: controller.clearCompleted,
+          label: 'Clear completed',
+        ),
+      ],
+    )),
+  );
 }
