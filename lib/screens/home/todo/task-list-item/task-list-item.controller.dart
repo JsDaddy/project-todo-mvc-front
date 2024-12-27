@@ -4,14 +4,14 @@ import '../todo.model.dart';
 import '../todo.service.dart';
 
 class TaskListItemController extends GetxController {
-  TaskListItemController(this.task);
+  TaskListItemController(this.task, this._todoService);
 
-  final TodoService todoService = Get.find<TodoService>();
+  final TodoService _todoService;
   final TextEditingController textController = TextEditingController();
   final FocusNode focusNode = FocusNode();
   final RxBool isEditing = false.obs;
   final RxBool isHovered = false.obs;
-  final Task task;
+  final TaskModel task;
 
   @override
   void onInit() {
@@ -39,7 +39,7 @@ class TaskListItemController extends GetxController {
 
   void saveEdit(String value) {
     if (value.isNotEmpty) {
-      todoService.updateTaskText(task.id, value);
+      _todoService.updateTaskText(task.id, value);
     }
     isEditing.value = false;
   }
@@ -53,11 +53,13 @@ class TaskListItemController extends GetxController {
     this.isHovered.value = isHovered;
   }
 
-  void toggleCompletion({required bool isFinished}) {
-    todoService.updateTaskStatus(task.id, isFinished: isFinished);
+  void toggleCompletion({bool? isFinished}) {
+    if (isFinished != null) {
+      _todoService.updateTaskStatus(task.id, isFinished: isFinished);
+    }
   }
 
   void deleteTask() {
-    todoService.deleteTask(task.id);
+    _todoService.deleteTask(task.id);
   }
 }

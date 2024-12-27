@@ -1,20 +1,30 @@
 import 'package:get/get.dart';
 import '../todo.model.dart';
 import '../todo.service.dart';
+import 'filter-panel.enum.dart';
 import 'filter-panel.model.dart';
 
 class FilterPanelController extends GetxController {
-  final TodoService todoService = Get.find<TodoService>();
+  FilterPanelController(this._todoService);
 
-  final List<Filter> filters = const <Filter>[
-    Filter(label: 'All', key: 'all'),
-    Filter(label: 'Active', key: 'active'),
-    Filter(label: 'Completed', key: 'completed'),
+  final TodoService _todoService;
+  final Rx<FilterType> currentFilter = FilterType.all.obs;
+  final List<FilterModel> filters = const <FilterModel>[
+    FilterModel(type: FilterType.all),
+    FilterModel(type: FilterType.active),
+    FilterModel(type: FilterType.completed),
   ];
 
-  final RxString currentFilter = 'all'.obs;
+  List<TaskModel> get filteredTasks => _todoService.filteredTasks(currentFilter.value.label);
+  List<TaskModel> get tasks => _todoService.tasks;
 
-  List<Task> get filteredTasks => todoService.filteredTasks(currentFilter.value);
+  int get activeCount => _todoService.activeCount;
 
-  int get activeCount => todoService.activeCount;
+  void clearCompleted() {
+    _todoService.clearCompleted();
+  }
+
+  void setFilter(FilterType filter) {
+    currentFilter.value = filter;
+  }
 }

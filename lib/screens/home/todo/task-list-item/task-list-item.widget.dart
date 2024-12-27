@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/input/input.widget.dart';
 import '../todo.model.dart';
+import '../todo.service.dart';
 import 'task-list-item.controller.dart';
 
 class TaskListItemWidget extends StatelessWidget {
@@ -10,12 +11,12 @@ class TaskListItemWidget extends StatelessWidget {
     super.key,
   });
 
-  final Task task;
+  final TaskModel task;
 
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(
-          () => TaskListItemController(task),
+          () => TaskListItemController(task, Get.find<TodoService>()),
       tag: task.id.toString(),
     );
 
@@ -43,7 +44,7 @@ class TaskListItemWidget extends StatelessWidget {
                 Checkbox(
                   value: task.isFinished,
                   onChanged: (bool? isFinished) =>
-                    controller.toggleCompletion(isFinished: isFinished!)
+                    controller.toggleCompletion(isFinished: isFinished)
                   ,
                 ),
                 Expanded(

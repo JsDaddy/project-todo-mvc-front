@@ -3,13 +3,15 @@ import 'package:get/get.dart';
 import '../todo.service.dart';
 
 class AddTaskController extends GetxController {
+  AddTaskController(this._todoService);
+
+  final TodoService _todoService;
   final TextEditingController textController = TextEditingController();
   final FocusNode focusNode = FocusNode();
-  final TodoService todoService = Get.find<TodoService>();
 
   void addTask(String task) {
     if(task.isNotEmpty) {
-      todoService.addTask(task);
+      _todoService.addTask(task);
       textController.clear();
     }
   }

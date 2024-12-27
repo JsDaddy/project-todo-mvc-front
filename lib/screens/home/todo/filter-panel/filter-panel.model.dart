@@ -1,6 +1,8 @@
-class Filter {
-  const Filter({required this.label, required this.key});
+import 'filter-panel.enum.dart';
 
-  final String label;
-  final String key;
+class FilterModel {
+  const FilterModel({required this.type});
+
+  final FilterType type;
+  String get label => type.label;
 }

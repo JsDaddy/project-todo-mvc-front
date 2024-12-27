@@ -15,7 +15,7 @@ class TaskListWidget extends GetView<FilterPanelController> {
           Column(
             children: controller.filteredTasks
                 .map(
-                  (Task task) => TaskListItemWidget(
+                  (TaskModel task) => TaskListItemWidget(
                 task: task,
               ),
             )
