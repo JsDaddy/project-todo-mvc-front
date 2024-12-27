@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'add-task/add-task.widget.dart';
 import 'task-list/task-list.widget.dart';
 
-
 class TodoWidget extends StatelessWidget {
   const TodoWidget({super.key});
 

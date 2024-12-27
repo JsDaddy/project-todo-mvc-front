@@ -1,34 +1,11 @@
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import 'filter-panel/filter-panel.model.dart';
 import 'todo.model.dart';
+import 'package:flutter/material.dart';
 
 class TodoController extends GetxController {
   final TextEditingController textController = TextEditingController();
   final FocusNode focusNode = FocusNode();
-
-  final List<Filter> filters = const <Filter>[
-    Filter(label: 'All', key: 'all'),
-    Filter(label: 'Active', key: 'active'),
-    Filter(label: 'Completed', key: 'completed'),
-  ];
-
-
-  RxList<Task> tasks = <Task>[].obs;
-  RxString currentFilter = 'all'.obs;
-
-  List<Task> get filteredTasks {
-    switch (currentFilter.value) {
-      case 'active':
-        return tasks.where((Task task) => !task.isFinished).toList();
-      case 'completed':
-        return tasks.where((Task task) => task.isFinished).toList();
-      default:
-        return tasks;
-    }
-  }
-
-  int get activeCount => tasks.where((Task task) => !task.isFinished).length;
+  final RxList<Task> tasks = <Task>[].obs;
 
   void addTask(String title) {
     tasks.add(Task(title: title));
@@ -52,13 +29,5 @@ class TodoController extends GetxController {
 
   void deleteTask(Task task) {
     tasks.remove(task);
-  }
-
-  void setFilter(String filter) {
-    currentFilter.value = filter;
-  }
-
-  void clearCompleted() {
-    tasks.removeWhere((Task task) => task.isFinished);
   }
 }

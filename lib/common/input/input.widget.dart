@@ -4,8 +4,8 @@ class InputWidget extends StatelessWidget {
   const InputWidget({
     required this.textController,
     required this.focusNode,
-    required this.hintText,
     required this.onSubmitted,
+    this.hintText = '',
     super.key,
   });
   

@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'screens/home/home.screen.dart';
+import 'screens/home/home.binding.dart';
 
 void main() {
-  runApp(const TodoApp());
+  runApp(const MyApp());
 }
 
-class TodoApp extends StatelessWidget {
-  const TodoApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) => GetMaterialApp(
-      title: 'Todos',
-      getPages: [
-        GetPage(
-          name: '/',
-          page: HomeScreen.new,
-        ),
-      ],
+      initialBinding: HomeBinding(),
+      home: const HomeScreen(),
     );
 }
