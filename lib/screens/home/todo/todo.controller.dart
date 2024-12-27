@@ -8,7 +8,7 @@ class TodoController extends GetxController {
   final RxList<Task> tasks = <Task>[].obs;
 
   void addTask(String title) {
-    tasks.add(Task(title: title));
+    tasks.add(Task(title: title, id: '${tasks.length + 1}'));
   }
 
   void updateTaskStatus(Task task, {required bool isFinished}) {
@@ -27,7 +27,7 @@ class TodoController extends GetxController {
     }
   }
 
-  void deleteTask(Task task) {
-    tasks.remove(task);
+  void deleteTask(String id) {
+    tasks.removeWhere((Task task) => task.id == id);
   }
 }

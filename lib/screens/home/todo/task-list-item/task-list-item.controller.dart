@@ -1,36 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../todo.controller.dart';
+import '../todo.model.dart';
 
-class TaskListItemController {
-  TaskListItemController({required String initialTitle}) {
-    textController = TextEditingController(text: initialTitle);
-    focusNode = FocusNode();
+class TaskListItemController extends GetxController {
+  TaskListItemController(this.task);
+
+  final TodoController todoController = Get.find<TodoController>();
+  final TextEditingController textController = TextEditingController();
+  final FocusNode focusNode = FocusNode();
+  final RxBool isEditing = false.obs;
+  final RxBool isHovered = false.obs;
+  final Task task;
+
+  @override
+  void onInit() {
+    super.onInit();
+    textController.text = task.title;
+
+    focusNode.addListener(() {
+      if (!focusNode.hasFocus && isEditing.value) {
+        cancelEditing();
+      }
+    });
   }
 
-  bool isEditing = false;
-  bool isHovered = false;
-  late TextEditingController textController;
-  late FocusNode focusNode;
-
+  @override
+  void onClose() {
+    textController.dispose();
+    focusNode.dispose();
+    super.onClose();
+  }
 
   void startEditing() {
-    isEditing = true;
+    isEditing.value = true;
     focusNode.requestFocus();
   }
 
-  void saveEdit(Function(String) onUpdate) {
-    if (textController.text.isNotEmpty) {
-      onUpdate(textController.text);
+  void saveEdit(String value) {
+    if (value.isNotEmpty) {
+      todoController.updateTaskText(task, value);
     }
-    isEditing = false;
+    isEditing.value = false;
   }
 
-  void cancelEditing(String originalTitle) {
-    isEditing = false;
-    textController.text = originalTitle;
+  void cancelEditing() {
+    isEditing.value = false;
+    textController.text = task.title;
   }
 
-  void dispose() {
-    textController.dispose();
-    focusNode.dispose();
+  void toggleHover({required bool isHovered}) {
+    this.isHovered.value = isHovered;
+  }
+
+  void toggleCompletion({required bool isFinished}) {
+      todoController.updateTaskStatus(task, isFinished: isFinished);
+  }
+
+  void deleteTask() {
+    todoController.deleteTask(task.id);
   }
 }
