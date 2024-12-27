@@ -9,7 +9,7 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
 
   @override
   Widget build(BuildContext context) => Obx(() {
-    if (controller.tasks.isEmpty) {
+    if (controller.todoService.tasks.isEmpty) {
       return const SizedBox();
     }
 
@@ -32,7 +32,7 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
                 .toList(),
           ),
           ButtonWidget(
-            onTap: controller.clearCompleted,
+            onTap: () => controller.todoService.clearCompleted(),
             label: 'Clear completed',
           ),
         ],

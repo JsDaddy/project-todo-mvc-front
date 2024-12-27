@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../todo.controller.dart';
 import '../../../../common/input/input.widget.dart';
+import 'add-task.controller.dart';
 
-class AddTaskWidget extends GetView<TodoController> {
+class AddTaskWidget extends GetView<AddTaskController> {
   const AddTaskWidget({ super.key });
 
 
@@ -18,12 +18,7 @@ class AddTaskWidget extends GetView<TodoController> {
         textController: controller.textController,
         focusNode: controller.focusNode,
         hintText: 'What needs to be done?',
-        onSubmitted: (String value) {
-          if (value.isNotEmpty) {
-            controller.addTask(value);
-            controller.textController.clear();
-          }
-        },
+        onSubmitted: controller.addTask,
       ),
     );
 }

@@ -5,19 +5,16 @@ class TodoService extends GetxService {
   final RxList<Task> tasks = <Task>[].obs;
 
   void updateTaskStatus(String id, {required bool isFinished}) {
-    final Task? task = tasks.firstWhereOrNull((Task task) => task.id == id);
-    if (task != null) {
+    tasks.where((Task task) => task.id == id).forEach((Task task) {
       task.isFinished = isFinished;
-      tasks.refresh();
-    }
+    });
+    tasks.refresh();
   }
 
   void updateTaskText(String id, String updatedText) {
-    final Task? task = tasks.firstWhereOrNull((Task task) => task.id == id);
-    if (task != null) {
+    tasks.where((Task task) => task.id == id).forEach((Task task) {
       task.title = updatedText;
-      tasks.refresh();
-    }
+    });
   }
 
 

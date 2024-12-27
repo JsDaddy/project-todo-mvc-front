@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../todo.controller.dart';
 import '../todo.model.dart';
+import '../todo.service.dart';
 
 class TaskListItemController extends GetxController {
   TaskListItemController(this.task);
 
-  final TodoController todoController = Get.find<TodoController>();
+  final TodoService todoService = Get.find<TodoService>();
   final TextEditingController textController = TextEditingController();
   final FocusNode focusNode = FocusNode();
   final RxBool isEditing = false.obs;
@@ -39,7 +39,7 @@ class TaskListItemController extends GetxController {
 
   void saveEdit(String value) {
     if (value.isNotEmpty) {
-      todoController.updateTaskText(task, value);
+      todoService.updateTaskText(task.id, value);
     }
     isEditing.value = false;
   }
@@ -54,10 +54,10 @@ class TaskListItemController extends GetxController {
   }
 
   void toggleCompletion({required bool isFinished}) {
-      todoController.updateTaskStatus(task, isFinished: isFinished);
+    todoService.updateTaskStatus(task.id, isFinished: isFinished);
   }
 
   void deleteTask() {
-    todoController.deleteTask(task.id);
+    todoService.deleteTask(task.id);
   }
 }
