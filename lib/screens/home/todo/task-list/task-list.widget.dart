@@ -9,19 +9,23 @@ class TaskListWidget extends GetView<FilterPanelController> {
   const TaskListWidget({super.key});
 
   @override
-  Widget build(BuildContext context) => Obx(() => Column(
-      children: <Widget>[
-        if (controller.filteredTasks.isNotEmpty)
-          Column(
+  Widget build(BuildContext context) => Column(
+    children: <Widget>[
+      Obx(() {
+        if (controller.filteredTasks.isNotEmpty) {
+          return Column(
             children: controller.filteredTasks
-                .map(
+                .map<Widget>(
                   (TaskModel task) => TaskListItemWidget(
                 task: task,
               ),
             )
                 .toList(),
-          ),
-        const FilterPanelWidget(),
-      ],
-    ));
+          );
+        }
+        return const SizedBox();
+      }),
+      const FilterPanelWidget(),
+    ],
+  );
 }

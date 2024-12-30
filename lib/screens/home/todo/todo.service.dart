@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'filter-panel/filter-panel.enum.dart';
 import 'todo.model.dart';
 
 class TodoService extends GetxService {
@@ -14,11 +15,11 @@ class TodoService extends GetxService {
   }
 
 
-  List<TaskModel> filteredTasks(String filter) {
+  List<TaskModel> filteredTasks(FilterType filter) {
     switch (filter) {
-      case 'active':
+      case FilterType.active:
         return tasks.where((TaskModel task) => !task.isFinished).toList();
-      case 'completed':
+      case FilterType.completed:
         return tasks.where((TaskModel task) => task.isFinished).toList();
       default:
         return tasks;

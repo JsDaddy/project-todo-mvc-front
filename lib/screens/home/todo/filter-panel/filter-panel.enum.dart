@@ -1,16 +1,9 @@
 enum FilterType {
-  all,
-  active,
-  completed;
+  all('All'),
+  active('Active'),
+  completed('Completed');
 
-  String get label {
-    switch (this) {
-      case FilterType.all:
-        return 'All';
-      case FilterType.active:
-        return 'Active';
-      case FilterType.completed:
-        return 'Completed';
-    }
-  }
+  const FilterType(this.type);
+
+  final String type;
 }

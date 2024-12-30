@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/button/button.widget.dart';
 import 'filter-panel.controller.dart';
-import 'filter-panel.model.dart';
+import 'filter-panel.enum.dart';
 
 class FilterPanelWidget extends GetView<FilterPanelController> {
   const FilterPanelWidget({super.key});
@@ -22,18 +22,19 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
             '${controller.activeCount} items left',
             style: const TextStyle(fontSize: 14, color: Colors.grey),
           ),
-          Row(
+          Wrap(
+            spacing: 10,
             children: controller.filters
-                .map<Widget>((FilterModel filter) => ButtonWidget(
-              label: filter.label,
-              isActive: controller.currentFilter.value == filter.type,
-              onTap: () => controller.setFilter(filter.type),
+                .map<Widget>((FilterType filter) => ButtonWidget(
+              title: filter.type,
+              isActive: controller.currentFilter.value == filter,
+              onTap: () => controller.setFilter(filter),
             ))
                 .toList(),
           ),
           ButtonWidget(
             onTap: controller.clearCompleted,
-            label: 'Clear completed',
+            title: 'Clear completed',
           ),
         ],
       ),
