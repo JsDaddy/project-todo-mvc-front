@@ -4,17 +4,14 @@ import '../home/title/title.widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
-  Widget build(BuildContext context) => const Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            TitleWidget(),
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.white,
+        body: ListView(
+          children: const <Widget>[
+            Center(child: TitleWidget()),
             TodoWidget(),
           ],
         ),
-      ),
-    );
+      );
 }
