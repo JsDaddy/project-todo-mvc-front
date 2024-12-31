@@ -16,7 +16,7 @@ class TaskListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(
-          () => TaskListItemController(task, Get.find<TodoService>()),
+      () => TaskListItemController(task, Get.find<TodoService>()),
       tag: task.id.toString(),
     );
 
@@ -42,10 +42,9 @@ class TaskListItemWidget extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Checkbox(
-                  value: task.isFinished,
+                  value: task.isFinished.value,
                   onChanged: (bool? isFinished) =>
-                    controller.toggleCompletion(isFinished: isFinished)
-                  ,
+                      controller.toggleCompletion(isFinished: isFinished),
                 ),
                 Expanded(
                   child: GestureDetector(
@@ -54,10 +53,11 @@ class TaskListItemWidget extends StatelessWidget {
                       task.title,
                       style: TextStyle(
                         fontSize: 16,
-                        decoration: task.isFinished
+                        decoration: task.isFinished.value
                             ? TextDecoration.lineThrough
                             : null,
-                        color: task.isFinished ? Colors.grey : Colors.black,
+                        color:
+                            task.isFinished.value ? Colors.grey : Colors.black,
                       ),
                     ),
                   ),

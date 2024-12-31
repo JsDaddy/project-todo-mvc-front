@@ -1,7 +1,9 @@
+import 'package:get/get.dart';
+
 class TaskModel {
-  TaskModel({required this.title, required this.id, this.isFinished = false});
+  TaskModel({required this.title, required this.id, required this.isFinished});
 
   String title;
-  bool isFinished;
+  RxBool isFinished;
   final String id;
 }
