@@ -10,7 +10,8 @@ class FilterPanelController extends GetxController {
   final Rx<FilterType> currentFilter = FilterType.all.obs;
   final List<FilterType> filters = FilterType.values;
 
-  List<TaskModel> get filteredTasks => _todoService.filteredTasks(currentFilter.value);
+  List<TaskModel> get filteredTasks =>
+      _todoService.filteredTasks(currentFilter.value);
   List<TaskModel> get tasks => _todoService.tasks;
 
   int get activeCount => _todoService.activeCount;

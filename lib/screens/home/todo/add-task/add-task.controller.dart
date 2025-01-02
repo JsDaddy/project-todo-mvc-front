@@ -10,7 +10,7 @@ class AddTaskController extends GetxController {
   final FocusNode focusNode = FocusNode();
 
   void addTask(String task) {
-    if(task.isNotEmpty) {
+    if (task.isNotEmpty) {
       _todoService.addTask(task);
       textController.clear();
     }

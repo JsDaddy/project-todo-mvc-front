@@ -8,9 +8,9 @@ class HomeBinding extends Bindings {
   @override
   Future<void> dependencies() async {
     Get
-    ..lazyPut(TodoService.new)
-    ..lazyPut(() => AddTaskController(Get.find()))
-    ..lazyPut(() => FilterPanelController(Get.find()))
-    ..lazyPut(() => TaskListItemController(Get.find(), Get.find()));
+      ..lazyPut(TodoService.new)
+      ..lazyPut(() => AddTaskController(Get.find()))
+      ..lazyPut(() => FilterPanelController(Get.find()))
+      ..lazyPut(() => TaskListItemController(Get.find(), Get.find()));
   }
 }

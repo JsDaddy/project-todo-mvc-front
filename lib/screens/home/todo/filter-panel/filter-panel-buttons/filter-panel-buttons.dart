@@ -8,18 +8,16 @@ class FilterPanelButtons extends GetView<FilterPanelController> {
   const FilterPanelButtons({super.key});
 
   @override
-  Widget build(BuildContext context) => Obx(() {
-    return Wrap(
-      spacing: 10,
-      children: controller.filters
-          .map<Widget>(
-            (FilterType filter) => ButtonWidget(
-          title: filter.type,
-          isActive: controller.currentFilter.value == filter,
-          onTap: () => controller.setFilter(filter),
-        ),
-      )
-          .toList(),
-    );
-  });
+  Widget build(BuildContext context) => Obx(() => Wrap(
+        spacing: 10,
+        children: controller.filters
+            .map<Widget>(
+              (FilterType filter) => ButtonWidget(
+                title: filter.type,
+                isActive: controller.currentFilter.value == filter,
+                onTap: () => controller.setFilter(filter),
+              ),
+            )
+            .toList(),
+      ));
 }

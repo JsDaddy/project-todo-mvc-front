@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GetMaterialApp(
-      initialBinding: HomeBinding(),
-      home: const HomeScreen(),
-    );
+        initialBinding: HomeBinding(),
+        home: const HomeScreen(),
+      );
 }
