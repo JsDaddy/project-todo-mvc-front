@@ -24,7 +24,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web
+        run: flutter build web --base-href="/project-todo-mvc-front/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
