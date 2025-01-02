@@ -1,13 +1,10 @@
-name: CI Checks
+name: Quality Checks
 
-on:
-  push:
-    branches:
-      - '**'
+on: [push]
 
 jobs:
-  lint-and-build:
-    name: ci checks
+  quality-check:
+    name: Lint and Build
     runs-on: ubuntu-latest
 
     steps:
