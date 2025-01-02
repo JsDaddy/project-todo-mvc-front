@@ -18,6 +18,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^2.0.0
   lint: ^2.3.0
+  commitlint_cli: ^0.8.1
   jsdaddy_custom_lints:
     git:
       url: https://github.com/JsDaddy/dart-linter-rules

@@ -9,39 +9,39 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
 
   @override
   Widget build(BuildContext context) => Obx(() {
-    final bool isMobile = MediaQuery.of(context).size.width < 600;
+        final bool isMobile = MediaQuery.of(context).size.width < 600;
 
-    if (controller.tasks.isEmpty) {
-      return const SizedBox();
-    }
+        if (controller.tasks.isEmpty) {
+          return const SizedBox();
+        }
 
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        return Container(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: Column(
             children: <Widget>[
-              Text(
-                '${controller.activeCount} items left',
-                style: const TextStyle(fontSize: 14, color: Colors.grey),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    '${controller.activeCount} items left',
+                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  ),
+                  if (!isMobile) const FilterPanelButtons(),
+                  ButtonWidget(
+                    onTap: controller.clearCompleted,
+                    title: 'Clear completed',
+                  ),
+                ],
               ),
-              if (!isMobile) const FilterPanelButtons(),
-              ButtonWidget(
-                onTap: controller.clearCompleted,
-                title: 'Clear completed',
-              ),
+              if (isMobile)
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    FilterPanelButtons(),
+                  ],
+                ),
             ],
           ),
-          if (isMobile)
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                FilterPanelButtons(),
-              ],
-            ),
-        ],
-      ),
-    );
-  });
+        );
+      });
 }

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget(
-      {
-        required this.title,
-        required this.onTap,
-        this.isActive = false,
-        super.key});
+      {required this.title,
+      required this.onTap,
+      this.isActive = false,
+      super.key});
 
   final String title;
   final bool isActive;
@@ -21,17 +20,15 @@ class ButtonWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           decoration: BoxDecoration(
               border: Border.all(
-                  color: isActive ? Colors.red : Colors.transparent,
-                  width: 2,
+                color: isActive ? Colors.red : Colors.transparent,
+                width: 2,
               ),
               borderRadius: BorderRadius.circular(14)),
           child: Center(
-              child: Text(title,
-                style: const TextStyle(
-                  fontSize: 14,
-                ),
-              )
-          )
-      )
-  );
+              child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 14,
+            ),
+          ))));
 }
