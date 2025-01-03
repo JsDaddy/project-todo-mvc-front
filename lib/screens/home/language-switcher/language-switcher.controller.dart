@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'language-switcher.enum.dart';
 
-class LocaleController extends GetxController {
+class LanguageSwitcherController extends GetxController {
   final Rx<Language> currentLanguage = Language.en.obs;
 
   List<Language> get languages => Language.values;

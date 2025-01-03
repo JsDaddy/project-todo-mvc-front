@@ -5,6 +5,7 @@ import '../../screens/home/todo/add-task/add-task.translation.dart'
     as home_add_task;
 import '../../screens/home/todo/filter-panel/filter-panel.translation.dart'
     as home_filter_panel;
+import '../items-left/items-left.translation.dart' as items_left;
 
 class AppTranslation extends GetxService {
   AppTranslation();
@@ -40,6 +41,18 @@ class AppTranslation extends GetxService {
       home_filter_panel.en,
       home_filter_panel.uk,
       home_filter_panel.ru,
+    );
+
+    _combineTranslations(
+      home_filter_panel.en,
+      home_filter_panel.uk,
+      home_filter_panel.ru,
+    );
+
+    _combineTranslations(
+      items_left.en,
+      items_left.uk,
+      items_left.ru,
     );
 
     return translationsKeys;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/app-translation/translation.extensions.dart';
 import '../../../../common/button/button.widget.dart';
+import '../../../../common/items-left/items-left.extensions.dart';
 import 'filter-panel-buttons/filter-panel-buttons.dart';
 import 'filter-panel.controller.dart';
 import 'filter-panel.translation.dart';
@@ -11,8 +12,6 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
 
   @override
   Widget build(BuildContext context) => Obx(() {
-        final bool isMobile = MediaQuery.of(context).size.width < 600;
-
         if (controller.tasks.isEmpty) {
           return const SizedBox();
         }
@@ -25,23 +24,21 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    '${controller.activeCount} items left',
+                    controller.activeCount.itemsLeft,
                     style: const TextStyle(fontSize: 14, color: Colors.grey),
                   ),
-                  if (!isMobile) const FilterPanelButtons(),
                   ButtonWidget(
                     onTap: controller.clearCompleted,
                     title: FilterPanelTranslationNames.clearItems.tr,
                   ),
                 ],
               ),
-              if (isMobile)
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    FilterPanelButtons(),
-                  ],
-                ),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  FilterPanelButtons(),
+                ],
+              ),
             ],
           ),
         );

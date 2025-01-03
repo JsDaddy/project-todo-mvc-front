@@ -12,7 +12,7 @@ class HomeBinding extends Bindings {
     Get
       ..lazyPut(AppTranslation.new)
       ..lazyPut(TodoService.new)
-      ..lazyPut(LocaleController.new)
+      ..lazyPut(LanguageSwitcherController.new)
       ..lazyPut(() => AddTaskController(Get.find()))
       ..lazyPut(() => FilterPanelController(Get.find()))
       ..lazyPut(() => TaskListItemController(Get.find(), Get.find()));
