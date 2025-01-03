@@ -11,6 +11,7 @@ class TitleWidget extends StatelessWidget {
         padding: const EdgeInsets.only(top: 50, bottom: 20),
         child: Text(
           TitleTranslationNames.title.tr,
+          textAlign: TextAlign.center,
           style: const TextStyle(
             fontSize: 80,
             fontWeight: FontWeight.w300,
