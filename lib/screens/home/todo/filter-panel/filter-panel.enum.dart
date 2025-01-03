@@ -1,9 +1,14 @@
+import '../../../../common/app-translation/translation.extensions.dart';
+import 'filter-panel.translation.dart';
+
 enum FilterType {
-  all('All'),
-  active('Active'),
-  completed('Completed');
+  all(FilterPanelTranslationNames.all),
+  active(FilterPanelTranslationNames.active),
+  completed(FilterPanelTranslationNames.completed);
 
-  const FilterType(this.type);
+  const FilterType(this.translationKey);
 
-  final String type;
+  final FilterPanelTranslationNames translationKey;
+
+  String get type => translationKey.tr;
 }

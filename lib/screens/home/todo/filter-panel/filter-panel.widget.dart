@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../common/app-translation/translation.extensions.dart';
 import '../../../../common/button/button.widget.dart';
 import 'filter-panel-buttons/filter-panel-buttons.dart';
 import 'filter-panel.controller.dart';
+import 'filter-panel.translation.dart';
 
 class FilterPanelWidget extends GetView<FilterPanelController> {
   const FilterPanelWidget({super.key});
@@ -29,7 +31,7 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
                   if (!isMobile) const FilterPanelButtons(),
                   ButtonWidget(
                     onTap: controller.clearCompleted,
-                    title: 'Clear completed',
+                    title: FilterPanelTranslationNames.clearItems.tr,
                   ),
                 ],
               ),
