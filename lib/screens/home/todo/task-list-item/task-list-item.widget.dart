@@ -56,8 +56,6 @@ class TaskListItemWidget extends StatelessWidget {
                         decoration: task.isFinished.value
                             ? TextDecoration.lineThrough
                             : null,
-                        color:
-                            task.isFinished.value ? Colors.grey : Colors.black,
                       ),
                     ),
                   ),

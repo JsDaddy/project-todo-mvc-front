@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../common/theme-switcher/theme-switcher.controller.dart';
 import 'todo/add-task/add-task.controller.dart';
 import 'todo/filter-panel/filter-panel.controller.dart';
 import 'todo/task-list-item/task-list-item.controller.dart';
@@ -9,6 +10,7 @@ class HomeBinding extends Bindings {
   Future<void> dependencies() async {
     Get
       ..lazyPut(TodoService.new)
+      ..lazyPut(ThemeController.new)
       ..lazyPut(() => AddTaskController(Get.find()))
       ..lazyPut(() => FilterPanelController(Get.find()))
       ..lazyPut(() => TaskListItemController(Get.find(), Get.find()));
