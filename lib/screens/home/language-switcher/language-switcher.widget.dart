@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'language-switcher.controller.dart';
 import 'language-switcher.enum.dart';
 
-class LanguageSwitcher extends GetView<LanguageSwitcherController> {
-  const LanguageSwitcher({super.key});
+class LanguageSwitcherWidget extends GetView<LanguageSwitcherController> {
+  const LanguageSwitcherWidget({super.key});
 
   @override
   Widget build(BuildContext context) => Obx(() => DropdownButton<Language>(
@@ -14,7 +14,7 @@ class LanguageSwitcher extends GetView<LanguageSwitcherController> {
             controller.updateLocale(language);
           }
         },
-        items: controller.languages
+        items: Language.values
             .map<DropdownMenuItem<Language>>(
                 (Language language) => DropdownMenuItem<Language>(
                       value: language,

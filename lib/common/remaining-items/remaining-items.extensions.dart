@@ -2,14 +2,14 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../app-translation/translation.extensions.dart';
-import 'items-left.translation.dart';
+import 'remaining-items.translation.dart';
 
-extension ItemsLeftFormatting on int {
-  String get itemsLeft => _getPlural(
+extension RemainingItemsFormatter on int {
+  String get remainingItemsText => _getPlural(
         this,
-        one: ItemsLeftTranslationNames.oneItem.tr,
-        few: ItemsLeftTranslationNames.fewItems.tr,
-        many: ItemsLeftTranslationNames.manyItems.tr,
+        one: RemainingItemsTranslationNames.oneItem.tr,
+        few: RemainingItemsTranslationNames.fewItems.tr,
+        many: RemainingItemsTranslationNames.manyItems.tr,
       ).trim();
 
   String _getPlural(int value,

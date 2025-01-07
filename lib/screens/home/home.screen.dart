@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'language-switcher/language-switcher.dart';
+import 'language-switcher/language-switcher.widget.dart';
 import 'todo/todo.widget.dart';
 import '../home/title/title.widget.dart';
 
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: Center(
-                child: LanguageSwitcher(),
+                child: LanguageSwitcherWidget(),
               ),
             ),
             TodoWidget(),

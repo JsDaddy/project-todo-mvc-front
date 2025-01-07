@@ -4,8 +4,8 @@ import 'common/app-translation/app-translation.dart';
 import 'screens/home/home.binding.dart';
 import 'screens/home/home.screen.dart';
 
-Future<void> main() async {
-  await HomeBinding().dependencies();
+void main() {
+  Get.lazyPut(AppTranslation.new);
 
   runApp(const MyApp());
 }

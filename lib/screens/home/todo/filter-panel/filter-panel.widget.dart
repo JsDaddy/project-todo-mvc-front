@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common/app-translation/translation.extensions.dart';
 import '../../../../common/button/button.widget.dart';
-import '../../../../common/items-left/items-left.extensions.dart';
+import '../../../../common/remaining-items/remaining-items.extensions.dart';
 import 'filter-panel-buttons/filter-panel-buttons.dart';
 import 'filter-panel.controller.dart';
 import 'filter-panel.translation.dart';
@@ -24,7 +24,7 @@ class FilterPanelWidget extends GetView<FilterPanelController> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    controller.activeCount.itemsLeft,
+                    controller.activeCount.remainingItemsText,
                     style: const TextStyle(fontSize: 14, color: Colors.grey),
                   ),
                   ButtonWidget(
