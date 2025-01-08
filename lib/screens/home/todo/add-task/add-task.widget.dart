@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../common/app-translation/translation.extensions.dart';
 import '../../../../common/input/input.widget.dart';
 import 'add-task.controller.dart';
+import 'add-task.translation.dart';
 
 class AddTaskWidget extends GetView<AddTaskController> {
   const AddTaskWidget({super.key});
@@ -16,7 +18,7 @@ class AddTaskWidget extends GetView<AddTaskController> {
         child: InputWidget(
           textController: controller.textController,
           focusNode: controller.focusNode,
-          hintText: 'What needs to be done?',
+          hintText: AddTaskTranslationNames.title.tr,
           onSubmitted: controller.addTask,
         ),
       );
