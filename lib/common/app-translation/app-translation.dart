@@ -44,12 +44,6 @@ class AppTranslation extends GetxService {
     );
 
     _combineTranslations(
-      home_filter_panel.en,
-      home_filter_panel.uk,
-      home_filter_panel.ru,
-    );
-
-    _combineTranslations(
       remaining_items.en,
       remaining_items.uk,
       remaining_items.ru,
